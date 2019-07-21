@@ -1,0 +1,35 @@
+
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+SUB Application_OnStart
+	' This script executes when a user first opens a page in an ActiveX application.
+	Application("MaxNewItems")=10
+END SUB
+</SCRIPT>
+
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+SUB Application_OnEnd
+	' This script executes when the server shuts down.
+END SUB
+</SCRIPT>
+
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+SUB Session_OnStart
+	' set connection string for database
+	' initialize variables
+	' set shopping cart constants
+	' ----------------------------------
+	 const MaxItems = 30
+	 const BasketWidth = 6
+	
+	 Session("dbConnectionString")="dsn=oe;uid=oe;pwd=oe"
+	 Session("SubTot") = 0
+	 Session("Total")=0
+	 Session("Shipping") = 0
+
+	' create shopping basket
+	 Redim basket(BasketWidth,MaxItems)
+	 Session("MyBasket")=basket
+	 Session("ItemCount") = 0
+
+END SUB
+</SCRIPT>
